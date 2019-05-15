@@ -33,7 +33,7 @@ class Vampire:
     self.drank_blood_today = True
 
   def go_home(self):
-    pass
+    self.in_coffin = True
 
 
 Vampire.create('Dracula', 1000)
@@ -45,12 +45,38 @@ print(Vampire.coven[1])
 print(Vampire.coven[2])
 print(len(Vampire.coven))
 
+print("---drink blood vampire 1 + 2---")
 Vampire.coven[0].drink_blood()
 Vampire.coven[1].drink_blood()
 
 print(Vampire.coven[0])
 print(Vampire.coven[1])
+print(Vampire.coven[2])
 print(len(Vampire.coven))
+
+print("---sunrise---")
+Vampire.sunrise()
+print(len(Vampire.coven))
+print(Vampire.coven)
+
+print("---sunset---")
+Vampire.sunset()
+print(Vampire.coven[0])
+print(Vampire.coven[1])
+print(len(Vampire.coven))
+
+print("---drink blood vampire 1 + 2---")
+Vampire.coven[0].drink_blood()
+Vampire.coven[1].drink_blood()
+
+print(Vampire.coven[0])
+print(Vampire.coven[1])
+
+print("---go home vampire 1---")
+Vampire.coven[0].go_home()
+
+print(Vampire.coven[0])
+print(Vampire.coven[1])
 
 print("---sunrise---")
 Vampire.sunrise()
