@@ -11,6 +11,9 @@ class Vampire:
     def __str__(self):
         return f"Name: {self.name}\nAge: {self.age}\nIn Coffin: {self.in_coffin}\nDrank Blood Today: {self.drank_blood_today}"
 
+    def __repr__(self):
+        return f"{self.name} (Drank Blood: {self.drank_blood_today}  In Coffin: {self.in_coffin})"
+
     @classmethod
     def create(cls, name, age):
         vampire = Vampire(name, age)
@@ -19,7 +22,9 @@ class Vampire:
     @classmethod
     def sunrise(cls):
         for vampire in cls.coven:
-            if not vampire.drank_blood_today or not vampire.in_coffin:
+            if vampire.drank_blood_today or vampire.in_coffin:
+                pass
+            else:
                 cls.coven.remove(vampire)
 
     @classmethod
@@ -38,46 +43,55 @@ class Vampire:
 Vampire.create("Dracula", 1000)
 Vampire.create("Selene", 1500)
 Vampire.create("Blade", 2000)
+Vampire.create("The Count", 500)
 
-print(Vampire.coven[0])
-print(Vampire.coven[1])
-print(Vampire.coven[2])
-print(len(Vampire.coven))
+for vampire in Vampire.coven:
+    print()
+    print(vampire)
 
-print("---drink blood vampire 1 + 2---")
-Vampire.coven[0].drink_blood()
-Vampire.coven[1].drink_blood()
+print()
+print(
+    Vampire.coven
+)  # [Dracula (Drank Blood: False  In Coffin: True), Selene (Drank Blood: False  In Coffin: True), Blade (Drank Blood: False  In Coffin: True), The Count (Drank Blood: False  In Coffin: True)]
 
-print(Vampire.coven[0])
-print(Vampire.coven[1])
-print(Vampire.coven[2])
-print(len(Vampire.coven))
-
-print("---sunrise---")
-Vampire.sunrise()
-print(len(Vampire.coven))
-print(Vampire.coven)
-
-print("---sunset---")
+print()
+print("----sunset----")
 Vampire.sunset()
-print(Vampire.coven[0])
-print(Vampire.coven[1])
-print(len(Vampire.coven))
 
-print("---drink blood vampire 1 + 2---")
+print()
+print(
+    Vampire.coven
+)  # [Dracula (Drank Blood: False  In Coffin: False), Selene (Drank Blood: False  In Coffin: False), Blade (Drank Blood: False  In Coffin: False), The Count (Drank Blood: False  In Coffin: False)]
+
+print()
+print("----drink blood vampire 1 & 3----")
 Vampire.coven[0].drink_blood()
-Vampire.coven[1].drink_blood()
+Vampire.coven[2].drink_blood()
 
-print(Vampire.coven[0])
-print(Vampire.coven[1])
+print()
+print(
+    Vampire.coven
+)  # [Dracula (Drank Blood: True  In Coffin: False), Selene (Drank Blood: False  In Coffin: False), Blade (Drank Blood: True  In Coffin: False), The Count (Drank Blood: False  In Coffin: False)]
 
-print("---go home vampire 1---")
-Vampire.coven[0].go_home()
+print()
+print("----go home vampire 3 & 4----")
+Vampire.coven[2].go_home()
+Vampire.coven[3].go_home()
 
-print(Vampire.coven[0])
-print(Vampire.coven[1])
+print()
+print(
+    Vampire.coven
+)  # [Dracula (Drank Blood: True  In Coffin: False), Selene (Drank Blood: False  In Coffin: False), Blade (Drank Blood: True  In Coffin: True), The Count (Drank Blood: False  In Coffin: True)]
 
-print("---sunrise---")
+print()
+print("----sunrise----")
 Vampire.sunrise()
-print(len(Vampire.coven))
-print(Vampire.coven)
+
+print()
+print(
+    Vampire.coven
+)  # [Dracula (Drank Blood: True  In Coffin: False), Blade (Drank Blood: True  In Coffin: True), The Count (Drank Blood: False  In Coffin: True)]
+
+for vampire in Vampire.coven:
+    print()
+    print(vampire)
