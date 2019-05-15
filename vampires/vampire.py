@@ -18,11 +18,16 @@ class Vampire:
 
   @classmethod
   def sunrise(cls):
-    pass
+    for vampire in cls.coven:
+      if not vampire.drank_blood_today or not vampire.in_coffin:
+        cls.coven.remove(vampire)
+
 
   @classmethod
   def sunset(cls):
-    pass
+    for vampire in cls.coven:
+      vampire.drank_blood_today = False
+      vampire.in_coffin = False
 
   def drink_blood(self):
     self.drank_blood_today = True
@@ -32,9 +37,22 @@ class Vampire:
 
 
 Vampire.create('Dracula', 1000)
-vampire1 = Vampire.coven[0]
-print(vampire1)
-vampire1.drink_blood()
-print(vampire1)
+Vampire.create('Selene', 1500)
+Vampire.create('Blade', 2000)
 
-  
+print(Vampire.coven[0])
+print(Vampire.coven[1])
+print(Vampire.coven[2])
+print(len(Vampire.coven))
+
+Vampire.coven[0].drink_blood()
+Vampire.coven[1].drink_blood()
+
+print(Vampire.coven[0])
+print(Vampire.coven[1])
+print(len(Vampire.coven))
+
+print("---sunrise---")
+Vampire.sunrise()
+print(len(Vampire.coven))
+print(Vampire.coven)
