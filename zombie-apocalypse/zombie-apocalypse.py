@@ -1,8 +1,8 @@
 from zombie import Zombie
 
-print(Zombie.horde) 
+print(Zombie.horde)
 Zombie.new_day()
-print(Zombie.horde) 
+print(Zombie.horde)
 zombie1 = Zombie.horde[0]
 print(zombie1)
 zombie2 = Zombie.horde[1]
