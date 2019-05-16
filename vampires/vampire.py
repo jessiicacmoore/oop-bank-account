@@ -21,11 +21,17 @@ class Vampire:
 
     @classmethod
     def sunrise(cls):
+        dead_vampires = []
         for vampire in cls.coven:
-            if vampire.drank_blood_today or vampire.in_coffin:
-                pass
-            else:
-                cls.coven.remove(vampire)
+            if vampire.drank_blood_today is False or vampire.in_coffin is False:
+                dead_vampires.append(vampire)
+
+        for vampire in dead_vampires:
+            cls.coven.remove(vampire)
+            # if vampire.drank_blood_today or vampire.in_coffin:
+            #     pass
+            # else:
+            #     cls.coven.remove(vampire)
 
     @classmethod
     def sunset(cls):
